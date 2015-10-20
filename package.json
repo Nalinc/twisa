@@ -1,0 +1,13 @@
+{
+  "name": "SimpleSentimentAnalysisApp",
+  "description": "Simple Sentiment Analysis App",
+  "version": "0.9.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "ntwitter": "^0.5.0",
+    "sentiment": "^1.0.2",
+    "socket.io": "^1.3.7"
+  }
+}
