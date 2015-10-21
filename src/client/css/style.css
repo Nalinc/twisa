@@ -1,0 +1,52 @@
+html,body{
+	height:100%;
+	width: 100%;
+}
+.navbar.navbar-inverse{
+	border-radius: 0;
+}
+.navbar .navbar-header{
+	padding-left:40px;
+}
+.navbar .navbar-header .navbar-brand{
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    letter-spacing: -1px;
+    font-weight: bold;
+    line-height: 1;
+}
+.container{
+	height:85%;
+	width: 100%;
+	text-align: center;
+}
+.container h2{
+	font-weight: bold;
+}
+.container .well{
+	margin-top: 80px;	
+}
+.container .well #twitter_phrase{
+	border: 3px solid #5ea9dd;
+	border-radius: 5px;
+	text-align: center;
+	margin:40px auto;
+	display: block;
+}
+.container .well .btn{
+	margin: 10px auto 20px auto;
+}
+.footer{
+	text-align:center;
+	position:relative;
+	bottom:0;
+}
+.footer a{
+	text-decoration: none;
+	font-weight: bold;	
+}
+.footer a:hover{
+	text-decoration: none;
+}
