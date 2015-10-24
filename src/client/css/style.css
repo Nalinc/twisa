@@ -1,9 +1,9 @@
 html,body{
 	height:100%;
 	width: 100%;
+	background-color: #F6F6F6 !important;
 }
 .navbar.navbar-inverse{
-	border-radius: 0;
 }
 .navbar .navbar-header{
 	padding-left:40px;
@@ -18,14 +18,13 @@ html,body{
     line-height: 1;
 }
 .container{
-	height:85%;
 	width: 100%;
 	text-align: center;
 }
 .container h2{
 	font-weight: bold;
 }
-.container .well{
+.container .panal{
 	margin-top: 80px;	
 }
 .container .well #twitter_phrase{
@@ -38,10 +37,78 @@ html,body{
 .container .well .btn{
 	margin: 10px auto 20px auto;
 }
+.container .feed-title{
+	margin-bottom: 40px;
+}
+.container .positive{
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: lightseagreen;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+}
+.container .negative{
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: crimson;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+}
+.container .neutral{
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+}
+.container .feed-user{
+	text-align: left;
+	margin-left: 10px;
+}
+.container blockquote {
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+.container blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+.container blockquote p {
+  display: inline;
+}
+.container .settings-panal{
+	text-align: left;
+}
+.container .settings-panal div{
+	margin: -10px 0 30px 20px;
+}
+.container .phasemonitor{
+	width:200px;
+	height:30px;
+	border-radius: 15px;
+	margin: 20px;
+}
+.container .phasemonitor.pause{
+	background-color: crimson;
+}
+.container .phasemonitor.resume{
+	background-color: lightseagreen;
+}
+
 .footer{
-	text-align:center;
-	position:relative;
-	bottom:0;
+	background-color: #F6F6F6;
+	position:fixed;
+	text-align: center;
+	width: 100%;
+	bottom:20px;
 }
 .footer a{
 	text-decoration: none;

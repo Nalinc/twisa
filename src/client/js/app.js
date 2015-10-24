@@ -2,27 +2,67 @@ define([], function() {
 
 		var app = angular.module('app', ['ngRoute']);
 
-		app.config(function($routeProvider, $urlRouterProvider){
-
-			$urlRouterProvider.otherwise('/');
+		app.config(function($routeProvider){
 
 			$routeProvider
 				.when('/', {
 			  	templateUrl: '/views/home.html',
 			  	controller: 'homeController',
 			  })
-			  .when('/monitor', {
+				.when('/monitor', {
 			    templateUrl: '/views/monitor.html',
 			    controller: 'monitorController'
-			  });
+			  })
+				.otherwise({
+		        redirectTo: '/'
+		      });
 		});
 
-		app.controller('homeController', function($scope,$rootScope){
-			$scope.appname= 'Twitter Sentiment Analysis';
+		app.controller('homeController', function($scope,$rootScope,$location){
+			$scope.appname = 'Twitter Sentiment Analysis';
+			$scope.analyzePhrase = function(){
+				$rootScope.testphrase=$scope.phrase;
+				if($scope.phrase)
+					$location.path("/monitor");
+			};
+
 		});
 
-		app.controller('monitorController', function($scope,$rootScope){
-			$rootScope.showLoader= false;
+		app.controller('monitorController', function($scope,$rootScope,$timeout,$location){
+			if(!$rootScope.testphrase)
+				$location.path('/');
+			else{
+				$rootScope.showLoader= false;
+				$scope.feeds=[];
+				$scope.monitoringPhase='pause';
+				socket = io.connect('http://localhost:3000');
+				socket.emit('monitor',$rootScope.testphrase);
+				socket.on('feedsupdate',function(res){
+					console.log(res)
+			        $timeout(function() {
+						$scope.feeds.unshift(res);
+			        }, 1000);
+				})
+
+				$scope.pauseMonitoring = function(){
+					socket.io.disconnect();
+				}
+
+				$scope.resumeMonitoring = function(){
+					socket.io.reconnect();
+				}
+				$scope.changeState = function(){
+					if($scope.monitoringPhase=='pause'){
+						$scope.monitoringPhase='resume'
+						$scope.pauseMonitoring();
+					}
+					else{
+						$scope.monitoringPhase='pause'
+						$scope.resumeMonitoring();
+					}
+				}		
+			}
+
 		});
 
 		return app;

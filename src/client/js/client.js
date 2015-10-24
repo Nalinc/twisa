@@ -4,7 +4,7 @@ define(function(){
 
 	});
 
-	socket = io.connect('http://192.168.1.57:3000');
+	socket = io.connect('http://localhost:3000');
 	socket.emit('join','nalin');
 
 

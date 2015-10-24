@@ -1,7 +1,7 @@
 require.config({
 	paths:{
 		'jQuery':'lib/jquery-1.11.1.min',
-        'angular': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min',
+        'angular': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular',
         'angular-route': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route',
         'app':'app'		
 	},

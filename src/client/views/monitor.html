@@ -1,0 +1,39 @@
+<div class="container">
+	<div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h2 class="feed-title">Analyzing live tweets for <br/>
+				"<i>{{testphrase}}</i>"</h2>		
+			</div>	
+			<div class="col-xs-12 settings-panal">
+				<button class="phasemonitor" ng-class="monitoringPhase" ng-click="changeState()">{{monitoringPhase}}</button>
+				<div>
+					<b>#Number of tweets analyzed:</b> {{feeds.length}}
+				</div>
+			</div>	
+			<div class="col-xs-6">
+			</div>	
+		</div>
+		<div class="feeds" ng-repeat="feed in feeds" ng-class="feed.type">
+			<div class="row">
+				<div class="col-xs-12 feed-user"><b>@{{feed.user.name}}</b></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" style="text-align:justify">
+				<blockquote>{{feed.text}}</blockquote>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">No of positive tokens: {{feed.positive_count}}</div>
+				<div class="col-xs-4">No of negative tokens: {{feed.negative_count}}</div>
+				<div class="col-xs-4">Sentiment Score: {{feed.score}}</div>
+			</div>
+		</div>
+
+<!-- 		<div class="feeds positive">This is a good thing</div>
+		<div class="feeds negative">Err.. I hate this</div>
+		<div class="feeds neutral">Earth revolves around the sun</div>
+ -->
+	</div>
+
+</div>
