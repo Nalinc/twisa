@@ -5,22 +5,45 @@
 				<h2 class="feed-title">Analyzing live tweets for <br/>
 				"<i>{{testphrase}}</i>"</h2>		
 			</div>	
-			<div class="col-xs-12 settings-panal">
-				<button class="phasemonitor" ng-class="monitoringPhase" ng-click="changeState()">{{monitoringPhase}}</button>
+			<div class="col-xs-6 settings-panal">
+				<button class="phasemonitor btn btn-primary" ng-click="reset()">reset</button>
+				<button class="phasemonitor btn btn-primary" ng-class="monitoringPhase" ng-click="changeState()">{{monitoringPhase}}</button>
 				<div>
 					<b>#Number of tweets analyzed:</b> {{feeds.length}}
 				</div>
 			</div>	
-			<div class="col-xs-6">
+			<div class="col-xs-6 filter-panal">
+				 <div class="squaredOne">
+				    <input type="checkbox" value="None" id="squaredOne" name="check" checked />
+			    	<label for="squaredOne"></label>
+			    	<sapn class="positive"><b>Positive</b></sapn>
+			    </div>
+				 <div class="squaredOne">
+				    <input type="checkbox" value="None" id="squaredTwo" name="check" checked />
+			    	<label for="squaredTwo"></label>
+				    <span class="negative"><b>Negative</b></span>
+			    </div>
+				 <div class="squaredOne">
+				    <input type="checkbox" value="None" id="squaredThree" name="check" checked />
+				    <label for="squaredThree"></label>
+				    <span class="neutral"><b>Neutral</b></span>
+			    </div>
+				<div>
+					<b>Filter content based on sentiments</b>
+				</div>
+
 			</div>	
 		</div>
-		<div class="feeds" ng-repeat="feed in feeds" ng-class="feed.type">
+		<div class="feeds" ng-repeat="feed in feeds">
 			<div class="row">
-				<div class="col-xs-12 feed-user"><b>@{{feed.user.name}}</b></div>
+				<div class="col-xs-12 feed-user">
+					<img ng-src={{feed.user['profile_image_url']}}>	
+					<b>@{{feed.user['screen_name']}}</b>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12" style="text-align:justify">
-				<blockquote>{{feed.text}}</blockquote>
+				<a ng-href={{feed.url}} target='_blank' class='anchor' ng-class='feed.type'><blockquote>{{feed.text}}</blockquote></a>
 				</div>
 			</div>
 			<div class="row">

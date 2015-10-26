@@ -40,17 +40,21 @@ define([], function() {
 				socket.on('feedsupdate',function(res){
 					console.log(res)
 			        $timeout(function() {
-						$scope.feeds.unshift(res);
+						$scope.feeds.push(res);
 			        }, 1000);
 				})
 
 				$scope.pauseMonitoring = function(){
-					socket.io.disconnect();
+					socket.emit('pauseStreaming',$rootScope.testphrase);
 				}
 
 				$scope.resumeMonitoring = function(){
-					socket.io.reconnect();
+					socket.emit('monitor',$rootScope.testphrase);
 				}
+				$scope.reset = function(){
+					socket.emit('pauseStreaming',$rootScope.testphrase);
+					$location.path('/');
+				}				
 				$scope.changeState = function(){
 					if($scope.monitoringPhase=='pause'){
 						$scope.monitoringPhase='resume'

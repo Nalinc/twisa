@@ -21,6 +21,9 @@ html,body{
 	width: 100%;
 	text-align: center;
 }
+.anchor,.anchor:hover,.anchor:active,.anchor:visited{
+  text-decoration: none;
+}
 .container h2{
 	font-weight: bold;
 }
@@ -40,32 +43,32 @@ html,body{
 .container .feed-title{
 	margin-bottom: 40px;
 }
-.container .positive{
+.container .feeds{
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: lightseagreen;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
+}
+.container .feeds:hover{
+  background-color: #f0f0f0;
+}
+.container .positive{
+  color: #20b2aa;
 }
 .container .negative{
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: crimson;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
+  color: #dc143c;
 }
 .container .neutral{
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
+  color: #428bca;
 }
 .container .feed-user{
 	text-align: left;
 	margin-left: 10px;
+  margin-bottom: -15px;
+}
+.container .feed-user b{
+  vertical-align: top;
 }
 .container blockquote {
   border-left: 10px solid #ccc;
@@ -84,6 +87,12 @@ html,body{
 .container blockquote p {
   display: inline;
 }
+.container .filter-panal{
+  text-align: right;
+}
+.container  .filter{
+  margin:20px 0 20px 0;
+}
 .container .settings-panal{
 	text-align: left;
 }
@@ -91,16 +100,13 @@ html,body{
 	margin: -10px 0 30px 20px;
 }
 .container .phasemonitor{
-	width:200px;
-	height:30px;
-	border-radius: 15px;
-	margin: 20px;
+	margin: 20px 10px 20px 20px;
 }
 .container .phasemonitor.pause{
-	background-color: crimson;
+	background-color: #dc143c;
 }
 .container .phasemonitor.resume{
-	background-color: lightseagreen;
+	background-color: #20b2aa;
 }
 
 .footer{
@@ -110,10 +116,56 @@ html,body{
 	width: 100%;
 	bottom:20px;
 }
-.footer a{
-	text-decoration: none;
+.footer .anchor{
 	font-weight: bold;	
 }
-.footer a:hover{
-	text-decoration: none;
+
+/* $activeColor: #c0392b; //red */
+/* $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png'); */
+/* .squaredOne */
+.squaredOne {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin: 20px 30px 20px 30px;
+  display:inline-block;
+  background: #fcfff4;
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
+.squaredOne label {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+}
+.squaredOne label:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  background: #27ae60;
+  background: -webkit-linear-gradient(top, #27ae60 0%, #145b32 100%);
+  background: linear-gradient(to bottom, #27ae60 0%, #145b32 100%);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+.squaredOne label:hover::after {
+  opacity: 0.3;
+}
+.squaredOne input[type=checkbox] {
+  visibility: hidden;
+}
+.squaredOne input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+/* end .squaredOne */

@@ -11,8 +11,6 @@ var port = (process.env.VCAP_APP_PORT || 3000);
 // make Stream globally visible so we can clean up better
 var stream;
 
-var DEFAULT_TOPIC = "Justin Bieber";
-
 // defensiveness against errors parsing request bodies...
 process.on('uncaughtException', function (err) {
     console.error('Caught exception: ' + err.stack);
@@ -127,7 +125,7 @@ io.on('connection',function(client){
                                     'user':data.user,
                                     'text':data.text,
                                     'created_at':data['created_at'],
-                                    'url':'http://www.twitter.com/'+data.user.name+'/status/'+data['id_str'],
+                                    'url':'http://www.twitter.com/'+data.user['screen_name']+'/status/'+data['id_str'],
                                     'score':result.score,
                                     'positive_count':result.positive.length,
                                     'negative_count':result.negative.length,
@@ -184,8 +182,8 @@ io.on('connection',function(client){
             beginMonitoring(phrase);
         });
 
-        client.on('messageOut',function(data){
-            client.broadcast.emit("AddMessage",data);
+        client.on('pauseStreaming',function(data){
+            resetMonitoring();
         });
 
         client.on("disconnect",function(){
@@ -198,12 +196,6 @@ io.on('connection',function(client){
 app.get('/',function (req, res) {
         res.sendFile("index.html");
 });
-
-app.get('/reset', function (req, res) {
-    resetMonitoring();
-    res.redirect(302, '/');
-});
-
 
 server.listen(port);
 console.log("Server listening on port " + port);
